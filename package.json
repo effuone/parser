@@ -1,0 +1,19 @@
+{
+  "name": "parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scraper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
+    "puppeteer": "^15.3.1",
+    "txt-file-to-json": "^3.0.6"
+  }
+}
