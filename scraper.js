@@ -1,8 +1,7 @@
 import puppeteer from 'puppeteer';
 import * as fs from 'fs';
-import txtToJson from 'txt-file-to-json';
 
-const url = "https://yummyanime.org/";
+const url = "https://hdi.zetfix.online/serials/comedy_serials/";
 
 let browser = await puppeteer.launch({
   headless: false,  defaultViewport: null,
@@ -14,25 +13,25 @@ const scrapePage = async (pageNumber) => {
   await page.goto(`${url}/page/${pageNumber}`), { waitUntil: "networkidle2" };
   
   let data = await page.evaluate(() => {
-    var title = Array.from(document.querySelectorAll(".poster__title")).map(
+    var title = Array.from(document.querySelectorAll(".vi-title")).map(
       (title) => title.innerText
     );
 
-    var time = Array.from(document.querySelectorAll(".poster__label")).map(
+    var time = Array.from(document.querySelectorAll(".vi-title")).map(
       (time) => time.innerText
-    )
+    );
   
     return [title, time];
   });
-  return [data]
+  return data;
 }
 
 let data = "["
-for (let i =0 ; i < 75; i++) {
+for (let i =0 ; i < 2; i++) {
   const pageData = await scrapePage(i);
   console.log(pageData);
   result.push(pageData);
-  if(i === 75 - 1){
+  if(i === 2 - 1){
     data = data + JSON.stringify(result[i])
     break
   }
